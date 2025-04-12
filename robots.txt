@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /register
+Disallow: /pricing-plans-new
+Disallow: /features-old
+Disallow: /assessments
+Disallow: /break-management
+Disallow: /task-management
+Disallow: /snapshots-and-capturing
+Disallow: /admin/
+Disallow: /company/*
+Disallow: /affiliate
+Disallow: */company-register/*
+Disallow: /blog-detail
+Disallow: /blogs-old

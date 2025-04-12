@@ -1,0 +1,1209 @@
+<button class="chat-open-button btn btn-primary" onclick="openForm()">
+    <img src="{{asset('/public/assets/img/bot-head.png')}}" alt="Bot head">
+</button>
+
+<!-- <div class="welcome-screen text-center d-none">
+            <img class="big-logo" src="./img/vizbot-text-img.png" alt="Vizbot Text Image">
+            <div class="d-flex align-items-center">
+                <button class="btn start-chat-btn">
+                    <img src="./img/handshake.png" alt="handshake">
+                    I’m here to help you..
+                </button>
+                <div class="logo">
+                    <img src="./img/vizbot-icon.png" alt="Vizbot Image">
+                </div>
+            </div>
+        </div> -->
+
+<div id="vizbot">
+
+    <div class="lds-roller-footer position-absolute">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="chat-screen" id="chat-screen">
+        <div class="chat-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <div class="img">
+                        <img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image">
+                    </div>
+                    <div class="text">
+                        <h6>VizBot</h6>
+                    </div>
+                </div>
+                <div class="other-btns d-flex justify-content-between align-items-center">
+                    <button class="btn settings-btn" onclick="minimizeForm()">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button class="btn close-btn" onclick="closeChatForm()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <mask id="mask0_201_150" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="24" height="24">
+                                <rect width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_201_150)">
+                                <path
+                                    d="M8.4 17L12 13.4L15.6 17L17 15.6L13.4 12L17 8.4L15.6 7L12 10.6L8.4 7L7 8.4L10.6 12L7 15.6L8.4 17ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                    fill="white" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-body-box">
+            <div class="chat-body" id="chat-body">
+            </div>
+            <div class="chat-close-timer" style="display: none;">
+                <div class="text-center">
+                    <h6>Chat Close in</h6>
+                    <p></p>
+                </div>
+            </div>
+            <form id="ratings-form" onsubmit="submitRatingsForm(event)" style="display: none;">
+                <div class="upper-part text-center">
+                    <h6>Help us with your feedback</h6>
+                    <div class="stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                            <mask id="mask0_317_603" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="33" height="33">
+                                <rect width="33" height="33" fill="rgba(51, 51, 51, 0.60)" />
+                            </mask>
+                            <g mask="url(#mask0_317_603)">
+                                <path
+                                    d="M8.00938 28.875L10.2438 19.2156L2.75 12.7188L12.65 11.8594L16.5 2.75L20.35 11.8594L30.25 12.7188L22.7563 19.2156L24.9906 28.875L16.5 23.7531L8.00938 28.875Z"
+                                    fill="rgba(51, 51, 51, 0.60)" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                            <mask id="mask0_317_603" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="33" height="33">
+                                <rect width="33" height="33" fill="rgba(51, 51, 51, 0.60)" />
+                            </mask>
+                            <g mask="url(#mask0_317_603)">
+                                <path
+                                    d="M8.00938 28.875L10.2438 19.2156L2.75 12.7188L12.65 11.8594L16.5 2.75L20.35 11.8594L30.25 12.7188L22.7563 19.2156L24.9906 28.875L16.5 23.7531L8.00938 28.875Z"
+                                    fill="rgba(51, 51, 51, 0.60)" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                            <mask id="mask0_317_603" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="33" height="33">
+                                <rect width="33" height="33" fill="rgba(51, 51, 51, 0.60)" />
+                            </mask>
+                            <g mask="url(#mask0_317_603)">
+                                <path
+                                    d="M8.00938 28.875L10.2438 19.2156L2.75 12.7188L12.65 11.8594L16.5 2.75L20.35 11.8594L30.25 12.7188L22.7563 19.2156L24.9906 28.875L16.5 23.7531L8.00938 28.875Z"
+                                    fill="rgba(51, 51, 51, 0.60)" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                            <mask id="mask0_317_603" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="33" height="33">
+                                <rect width="33" height="33" fill="rgba(51, 51, 51, 0.60)" />
+                            </mask>
+                            <g mask="url(#mask0_317_603)">
+                                <path
+                                    d="M8.00938 28.875L10.2438 19.2156L2.75 12.7188L12.65 11.8594L16.5 2.75L20.35 11.8594L30.25 12.7188L22.7563 19.2156L24.9906 28.875L16.5 23.7531L8.00938 28.875Z"
+                                    fill="rgba(51, 51, 51, 0.60)" />
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                            <mask id="mask0_317_603" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="33" height="33">
+                                <rect width="33" height="33" fill="rgba(51, 51, 51, 0.60)" />
+                            </mask>
+                            <g mask="url(#mask0_317_603)">
+                                <path
+                                    d="M8.00938 28.875L10.2438 19.2156L2.75 12.7188L12.65 11.8594L16.5 2.75L20.35 11.8594L30.25 12.7188L22.7563 19.2156L24.9906 28.875L16.5 23.7531L8.00938 28.875Z"
+                                    fill="rgba(51, 51, 51, 0.60)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <input type="hidden" name="rating-stars" id="rating-stars">
+                    <p id="rating-state"></p>
+                </div>
+                <div class="form-group">
+                    <label for="">Any comments you wish to add?</label>
+                    <textarea class="form-control" rows="4" name="client-comments" id="client-comments"
+                        placeholder="Enter comments"></textarea>
+                </div>
+                <div class="form-btns d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn cancel-btn" onclick="closeFormwithoutRatings()">Cancel</button>
+                    <button type="button" class="btn submit-btn" onclick="submitRatingsForm(event)">Submit</button>
+                </div>
+                <span class="info-form-error" id="ratings-form-error"></span>
+            </form>
+            <div class="bottom-part">
+                <form id="client-info-form" style="display: none;">
+                    <div class="form-group">
+                        <label>Enter Your Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="client_name" id="client_name"
+                            placeholder="Enter Your Name">
+                        <span id="client-name-error" class="info-form-error" style="display: none"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Your Email <span class="required">*</span></label>
+                        <input type="email" class="form-control" name="client_email" id="client_email"
+                            placeholder="Enter Your Name">
+                        <span id="client-email-error" class="info-form-error" style="display: none"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Phone Number</label>
+                        <input type="tel" class="form-control" id="client_phone" placeholder="(123) 343-3432">
+                    </div>
+                    <div class="submit-btn-group">
+                        <input type="submit" class="btn submit-btn" value="Submit">
+                    </div>
+                    <div class="info-form-error" id="client-form-server-error"></div>
+                </form>
+                <form id="chat-form" style="display: none;">
+                    <div class="form-group d-flex align-items-center">
+                        <input type="text" id="chat-reply-input" class="form-control" placeholder="Type here...">
+                        <button type="submit" id="submit-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <mask id="mask0_201_176" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="28" height="28">
+                                    <rect y="9.72998" width="20" height="20" transform="rotate(-29.1107 0 9.72998)"
+                                        fill="#D9D9D9" />
+                                </mask>
+                                <g mask="url(#mask0_201_176)">
+                                    <path
+                                        d="M10.405 22.2493L8.45903 18.7546L12.7281 14.0882L6.51304 15.2599L4.56705 11.7651L20.5913 9.70975L10.405 22.2493Z"
+                                        fill="white" />
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                <div class="chat-close-btns" style="display: none;">
+                    <button class="btn drop-msg-btn">Drop a message to keep it open!</button>
+                    <button class="btn end-chat-btn">End Chat</button>
+                </div>
+                <div class="chat-close-btns-user" style="display: none;">
+                    <button class="btn drop-msg-btn">Continue Chat</button>
+                    <button class="btn end-chat-btn">End Chat</button>
+                </div>
+                <p class="chat-by">Powered by <a href="{{url('/')}}">Staffviz</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #vizbot .iti__country-list--dropup {
+        max-width: 272px;
+        width: 272px;
+    }
+
+    #vizbot .iti--separate-dial-code .iti__selected-dial-code,
+    #vizbot .iti__flag-box,
+    #vizbot .iti__country-name,
+    #vizbot .iti__dial-code {
+        color: black;
+    }
+</style>
+<script>
+    var openMinimzieChat = 0;
+    var idleInterval = 0, idleTimer = 0, timerInterval = 0, technicalInquiryFlag = 0;
+    var closeTimer = $('#vizbot .chat-close-timer p').text();
+    function startIdleTimer() {
+        clearInterval(idleInterval);
+        clearInterval(timerInterval);
+        scrollToBottom();
+        saveChatbotHTML();
+        const startTime = performance.now();
+        let mintue = 1000 * 60;
+        let customMintue = 5 * mintue;
+        idleTimer = 0;
+
+        idleInterval = setInterval(() => {
+            const currentTime = performance.now();
+            idleTimer = Math.floor(currentTime - startTime);
+            // console.log(idleTimer);
+            if (idleTimer >= customMintue) {
+                clearInterval(idleInterval);
+                chat_idle_msg();
+                $('#chat-form').hide();
+                $('#vizbot .chat-close-timer,#vizbot .chat-close-btns').show();
+                saveChatbotHTML();
+                startCountDownTimer(1);
+            }
+        }, 1);
+    }
+
+    function startCountDownTimer(startMinutes) {
+        scrollToBottom();
+        saveChatbotHTML();
+        let timerValue = startMinutes * 60 * 1000;
+        timerInterval = setInterval(() => {
+            let totalSeconds = Math.floor(timerValue / 1000);
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = totalSeconds % 60;
+            let milliseconds = Math.floor((timerValue % 1000) / 10);
+
+            let formattedTime = `${minutes} : ${seconds < 10 ? '0' : ''}${seconds} : ${milliseconds < 10 ? '0' : ''}${milliseconds}`;
+
+            $('#vizbot .chat-close-timer p').text(formattedTime);
+            saveChatbotHTML();
+
+            if (timerValue <= 0) {
+                clearInterval(idleInterval);
+                clearInterval(timerInterval);
+                scrollToBottom();
+                // $('#vizbot #chat-body,#vizbot .chat-close-timer,#vizbot .chat-close-btns').hide();
+                $('#vizbot #chat-body').hide();
+                chat_end_msg();
+                $('.date-time').remove();
+                sendVizbotHTMLForm();
+            }
+
+            timerValue -= 10;
+        }, 10);
+    }
+
+
+    function closeChatForm() {
+        if (!($('#vizbot #ratings-form').is(":visible"))) {
+            clearInterval(timerInterval);
+            clearInterval(idleInterval);
+            let closeChatMsg = $('#chat-close-msg').length;
+            if (closeChatMsg < 1) {
+                chat_close_msg();
+                $('#vizbot .chat-close-timer,#vizbot .chat-close-btns,#vizbot .chat-close-btns-user,#vizbot .options-list-msg,#vizbot #chat-form,#vizbot #client-info-form').hide();
+                $('#vizbot .chat-close-btns-user').show();
+                $('#chat-close-msg').remove();
+                scrollToBottom();
+            }
+        }
+    }
+    function closeFormwithoutRatings() {
+        clearInterval(timerInterval);
+        clearInterval(idleInterval);
+        sendVizbotHTMLForm();
+        // Set a flag in localStorage to indicate that chatbot should be closed
+    }
+    function minimizeForm() {
+        document.getElementById("vizbot").style.display = "none";
+    }
+
+    // function getSettings() {
+    //   document.getElementById("chat-screen").style.display = "none";
+    //   document.getElementById("chat-settings").style.display = "block";
+    // }
+
+    // function hideSettings() {
+    //     document.getElementById("chat-settings").style.display = "none";
+    //     document.getElementById("chat-screen").style.display = "block";
+    //     document.getElementById("start-chat-text").style.display = "none";
+    //     document.getElementById("start-chat-button").innerHTML = "Save Settings";
+    //     scrollToBottom();
+    // }
+
+    function scrollToBottom() {
+        var objDiv = document.getElementById("chat-body");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    get_meg();
+
+    function get_meg() {
+        $(document).on('submit', '#chat-form', function (event) {
+            event.preventDefault();
+            var data_name = $(this).find('#chat-reply-input').val();
+            var time_now = getFormattedTime();
+            var history = [];
+            var user_post = '<div class="client-msg"><div class="text" title="' + time_now + '"><p>' + data_name + '</p></div><p class="date-time">' + time_now + '</p></div>';
+            $('.date-time,#vizbot .options-list-msg').remove();
+            $('#vizbot .chat-body').append(user_post);
+            $(this).find('textarea').val('');
+            scrollToBottom();
+            $(this).find('#chat-reply-input').val('');
+            var loader = '<div class="system-msg loader-row-msg"><div class="d-flex"><div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div> <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div></div></div>';
+            $('#vizbot .chat-body').append(loader);
+            scrollToBottom();
+            clearInterval(timerInterval);
+            clearInterval(idleInterval);
+            $.ajax({
+                url: app_ajax_chat,  // Your endpoint
+                type: "POST",  // HTTP method
+                contentType: "application/json",  // Ensures the server knows it's JSON
+                data: JSON.stringify({  // Serialize the data into JSON format
+                    user_query: data_name,  // Include your user query
+                    history: history  // Ensure 'history' is defined and valid
+                }),
+                success: function (response) {
+                    var formattedmsg = addAnchorTagsToLinks(response.response);
+                    var formattedmsg = addAnchorTagsToLinks(response.response);
+                    $('.date-time,#vizbot .chat-body .loader-row-msg').remove();
+                    var time_reply = getFormattedTime();
+                    var user_reply = '<div class="system-msg"><div class="d-flex"><div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div><div class="text-box"><div class="text" title="' + time_reply + '"><p>' + formattedmsg + '</p></div><p class="date-time">' + time_reply + '</p></div></div></div>';
+                    $('#vizbot .chat-body').append(user_reply);
+                    startIdleTimer();
+                    scrollToBottom();
+                },
+                error: function (xhr, status, error) {
+                    console.log("Request failed:", error);
+                }
+            });
+        })
+        return false;
+    }
+
+    function getFormattedTime() {
+        const date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        // Convert to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0 becomes 12
+        // Format minutes to always have two digits
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        return `${hours}:${minutes} ${ampm}`;
+    }
+
+    //Let's detect iOS because display issues. Not used yet, but we'll need it to fix some things, I think.
+    function iOS() {
+        var iDevices = [
+            "iPad Simulator",
+            "iPhone Simulator",
+            "iPod Simulator",
+            "iPad",
+            "iPhone",
+            "iPod"
+        ];
+
+        if (!!navigator.platform) {
+            while (iDevices.length) {
+                if (navigator.platform === iDevices.pop()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    $(document).ready(function () {
+        var selectedStars, selectedState;
+        const storedData = localStorage.getItem("chat_bot_client_data");
+        var parsedData = JSON.parse(storedData);
+        // console.log
+        // Stars Clicked
+        $(document).on('click', '#vizbot #ratings-form .stars svg', function () {
+            // console.log('star clicked');
+            let hoveredStars = $(this).index();
+            hoveredStars++;
+            let totalStars = 5;
+            for (let i = 1; i <= hoveredStars; i++) {
+                $('#vizbot #ratings-form .stars svg:nth-child(' + i + ')').addClass('selected');
+            }
+            for (let i = hoveredStars + 1; i <= totalStars; i++) {
+                $('#vizbot #ratings-form .stars svg:nth-child(' + i + ')').removeClass('selected');
+            }
+            let ratingState = $('#vizbot #ratings-form .upper-part #rating-state');
+
+            switch (hoveredStars) {
+                case 5:
+                    ratingState.text('Extremely Happy');
+                    selectedState = 'Extremely Happy';
+                    break;
+                case 4:
+                    ratingState.text('Satisfactory');
+                    selectedState = 'Satisfactory';
+                    break;
+                case 3:
+                    ratingState.text('Average');
+                    selectedState = 'Average';
+                    break;
+                case 2:
+                    ratingState.text('Poor');
+                    selectedState = 'Poor';
+                    break;
+                case 1:
+                    ratingState.text('Terrible');
+                    selectedState = 'Terrible';
+                    break;
+
+                default:
+                    ratingState.text('');
+            }
+            $('#vizbot #ratings-form .upper-part #rating-stars').val(hoveredStars);
+            selectedStars = hoveredStars;
+        });
+        //Hover Stars
+        $(document).on('mouseenter', '#vizbot #ratings-form .stars svg', function () {
+            let hoveredStars = $(this).index();
+            hoveredStars++;
+            let totalStars = 5;
+            for (let i = 1; i <= hoveredStars; i++) {
+                $('#vizbot #ratings-form .stars svg:nth-child(' + i + ')').addClass('hover');
+            }
+            for (let i = hoveredStars + 1; i <= totalStars; i++) {
+                $('#vizbot #ratings-form .stars svg:nth-child(' + i + ')').addClass('not-hover');
+            }
+            let ratingState = $('#vizbot #ratings-form .upper-part #rating-state');
+
+            switch (hoveredStars) {
+                case 5:
+                    ratingState.text('Extremely Happy');
+                    break;
+                case 4:
+                    ratingState.text('Satisfactory');
+                    break;
+                case 3:
+                    ratingState.text('Average');
+                    break;
+                case 2:
+                    ratingState.text('Poor');
+                    break;
+                case 1:
+                    ratingState.text('Terrible');
+                    break;
+
+                default:
+                    ratingState.text('');
+            }
+        }).on('mouseleave', '#vizbot #ratings-form .stars svg', function () {
+            $('#vizbot #ratings-form .stars svg').removeClass('hover not-hover');
+            if (selectedStars != null) {
+                $('#vizbot #ratings-form .upper-part #rating-stars').val(selectedStars);
+            }
+            else {
+                $('#vizbot #ratings-form .upper-part #rating-stars').val(0);
+            }
+            if (selectedState != null) {
+                $('#vizbot #ratings-form .upper-part #rating-state').text(selectedState);
+            }
+            else {
+                $('#vizbot #ratings-form .upper-part #rating-state').text('');
+            }
+        });
+        // Chatbot Rating Form Submit
+        $("#rating-stars").after('<input type="hidden" name="rating_client_id" value="' + parsedData.id + '" >');
+    });
+    function submitRatingsForm(e) {
+
+        $("#vizbot .lds-roller-footer").show();
+        e.preventDefault();
+        clearInterval(timerInterval);
+        clearInterval(idleInterval);
+        let form = $('#ratings-form').serialize();
+        $.ajax({
+            url: app_ajax_url + "save_guest_client_rating",
+            type: "POST",
+            data: form,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            datatype: "JSON",
+            success: function (e) {
+                console.log('e', e);
+                $("#vizbot .lds-roller-footer").hide();
+                sendVizbotHTMLForm();
+                $('#ratings-form-error').text('').show();
+            },
+            fail: function (jqXHR, textStatus, errorThrown) {
+                $("#vizbot .lds-roller-footer").hide();
+                $('#ratings-form-error').text(errorThrown).show();
+                // Handle failure case here
+                // You can also display an error message to the user if needed
+            }
+        });
+    }
+
+    function sendVizbotHTMLForm() {
+        clearInterval(timerInterval);
+        clearInterval(idleInterval);
+
+        $("#vizbot .lds-roller-footer").show();
+        // console.log(updatedHTML);
+        // return updatedHTML;
+
+        // Retrieve the data from localStorage
+        let storedData = localStorage.getItem('chat_bot_client_data');
+        let clientName = '', clientEmail = '';
+        // Parse the JSON string into an object
+        if (storedData) {
+            let parsedData = JSON.parse(storedData);
+
+            clientName = parsedData.client_name;
+            clientEmail = parsedData.client_email;
+
+        }
+
+        // Select the element containing the dynamically generated HTML
+        let $chatBody = $('#vizbot #chat-body');
+
+        // Find all .client-msg divs that contain 'technical inquiries' (case-insensitive)
+        let matchingMessages = $chatBody.find('.client-msg').filter(function () {
+            return /technical inquiries/i.test($(this).text()); // Case-insensitive search
+        });
+
+        // Check if any matching messages were found
+        if (matchingMessages.length > 0) {
+            technicalInquiryFlag = 1;
+        }
+        // Loop through system messages and convert to table format
+        $chatBody.find('.system-msg').each(function () {
+            let $this = $(this);
+            let messageContent = $this.html();
+            let time = $(this).find('.text').attr('title');
+
+            // Replace .system-msg content with a table-based structure
+            let tableHTML = `<table width="100%" cellspacing="0" cellpadding="10">
+                        <tr>
+                            <td style="padding:0">
+                                <p style="margin: 10px 0 5px;font-size: 15px;">Vizbot</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0" >
+                            <table cellspacing="0" cellpadding="10" style="background: #f7f7f7;font-family: Arial, sans-serif;border-radius:10px">
+                                <tr>
+                                    <td style="font-size: 14px; padding: 10px; text-align: left;">${messageContent}</td>
+                                </tr>
+                            <td>
+                        </tr>
+                    </table>
+                    <table width="100%" cellspacing="0" cellpadding="10">
+                        <tr>
+                            <td style="padding:3px 0 0;">
+                                <p style="font-size: 13px;">`+ time + `</p>
+                            </td>
+                        </tr>
+                    </table>`;
+            $this.replaceWith(tableHTML);
+        });
+
+        // Loop through client messages and convert to table format
+        $chatBody.find('.client-msg').each(function () {
+            let $this = $(this);
+            let messageContent = $this.html();
+            let time = $(this).find('.text').attr('title');
+
+            // Replace .client-msg content with a right-aligned table
+            let tableHTML = `<table align="right" style="width: 100%">
+                        <tr>
+                          <td style="padding:0">
+                            <table align="right"  cellspacing="0" cellpadding="10">
+                                <tr>
+                                    <td style="padding:0">
+                                        <p style="width:max-content;margin-left: auto;margin-top: 10px;margin-bottom: 5px; display: block;font-size: 15px;">
+                                            `+ clientName + `
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0">
+                            <table align="right" cellspacing="0" cellpadding="10" style="background: #1277fd;font-family: Arial, sans-serif;border-radius: 10px">
+                                <tr>
+                                    <td style="color: white; font-size: 14px; padding: 10px; text-align: left;">${messageContent}</td>
+                                </tr>
+                            <td>
+                        </tr>
+                    </table>
+                    <table width="100%" cellspacing="0" cellpadding="10">
+                        <tr>
+                          <td style="padding:0">
+                            <table align="right"  cellspacing="0" cellpadding="10">
+                                <tr>
+                                    <td style="padding:3px 0 0;">
+                                        <p style="font-size: 13px;">`+ time + `</p>
+                                    </td>
+                                </tr>
+                            </table>
+                          </td>
+                        </tr>
+                    </table>`;
+            $this.replaceWith(tableHTML);
+        });
+
+        // Hide images (Outlook-safe method: visibility:hidden and width/height to 0)
+        $chatBody.find('.img,.img img').each(function () {
+            let $img = $(this);
+
+            // Replace inline styles with Outlook-safe dimensions
+            $img.attr('style', 'width: 0px; height: 0px; mso-hide: all;opacity: 0;');
+
+            // Ensure alt text is empty
+            $img.attr('alt', '');
+
+        });
+
+        // Remove .form-back-btn elements
+        $chatBody.find('.form-back-btn').remove();
+
+        // Remove <tr><td></td></tr> specifically
+        $chatBody.find('tr:has(td:only-child:empty)').remove();
+
+
+
+        // Updated HTML content
+        let updatedHTML = $chatBody.html();
+        // var client
+        $.ajax({
+            url: app_ajax_url + "vizbot-email-post",
+            type: "POST",
+            data: {
+                vizbot_html: updatedHTML,
+                technical_flag: technicalInquiryFlag,
+                client_name: clientName,
+                client_email: clientEmail,
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            },
+            dataType: "JSON",
+            success: function (e) {
+                document.getElementById("vizbot").style.display = "none";
+                $('#vizbot #ratings-form .stars svg').removeClass('hover not-hover selected');
+                $('#vizbot #ratings-form .upper-part #rating-state').text('');
+                $('#vizbot #ratings-form, #vizbot #chat-form, #vizbot .chat-close-timer, #vizbot .chat-close-btns, #vizbot .chat-close-btns-user').hide();
+                $('#vizbot #chat-body').html('').show();
+                localStorage.removeItem('chatbot_state');
+                clearInterval(timerInterval);
+                clearInterval(idleInterval);
+                openMinimzieChat = 0;
+                $("#vizbot .lds-roller-footer").hide();
+                $('#ratings-form-error').text('').hide();
+                saveChatbotHTML();
+                technicalInquiryFlag = 0;
+            },
+            fail: function (jqXHR, textStatus, errorThrown) {
+                $("#vizbot .lds-roller-footer").hide();
+                $('#ratings-form-error').text(errorThrown).show();
+            }
+        });
+    }
+
+    // Client side validation
+    $(document).on('submit', '#vizbot #client-info-form', function (e) {
+        e.preventDefault();
+        $("#vizbot .lds-roller-footer").show();
+        let mainForm = $(this);
+        let isValid = true;
+
+        let clientName = mainForm.find('#client_name').val();
+        if (clientName == '') {
+            mainForm.find('#client-name-error').show().text('This field is required');
+            isValid = false;
+        }
+        else {
+            mainForm.find('#client-name-error').hide().text('');
+        }
+
+        let clientEmail = mainForm.find('#client_email').val();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (clientEmail == '') {
+            mainForm.find('#client-email-error').show().text('This field is required');
+            isValid = false;
+        } else if (!emailPattern.test(clientEmail)) {
+            mainForm.find('#client-email-error').show().text('Please enter a valid email address');
+            isValid = false;
+        } else {
+            mainForm.find('#client-email-error').hide().text('');
+        }
+        if (isValid) {
+            $.ajax({
+                url: app_ajax_url + "save_guest_client",
+                type: "POST",
+                cache: !1,
+                data: mainForm.serialize(),
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                datatype: "JSON",
+                success: function (e) {
+
+                    localStorage.setItem("chat_bot_client_data", JSON.stringify(e.data));
+                    if ($("input[name=rating_client_id]").length > 0) {
+                        $("input[name=rating_client_id]").val(e.data.id)
+                    } else {
+                        $("#rating-stars").after('<input type="hidden" name="rating_client_id" value="' + e.data.id + '" />')
+                    }
+                    $('#vizbot #chat-screen #first-msg').remove();
+                    $('#vizbot #chat-screen #client-info-form').hide();
+                    let userData = localStorage.getItem('chat_bot_client_data');
+                    userData = JSON.parse(userData);
+                    let clientName = userData.client_name;
+                    chat_first_msg_after_form();
+                    $('#first-msg-after-form .client-name-text').text(clientName);
+                    chat_options_list_msg();
+                    $('#vizbot #chat-screen #chat-form').show();
+                    $('#client-form-server-error').text('');
+                    $("#vizbot .lds-roller-footer").hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    const response = JSON.parse(xhr.responseText);
+                    $('#client-form-server-error').text(response.message);
+                    $("#vizbot .lds-roller-footer").hide();
+                }
+            });
+        } else {
+            $("#vizbot .lds-roller-footer").hide();
+        }
+    });
+
+    /* Chatbot all default msgs */
+    function chat_first_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg" id="first-msg">
+          <div class="d-flex">
+            <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+            <div class="text-box">
+              <div class="text" title="` + time_now + `">
+                <p>Hey! I’m VizBot, your StaffViz Guru. How can I help? 😊</p>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_first_msg_after_form() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg" id="first-msg-after-form">
+          <div class="d-flex">
+            <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+            <div class="text-box">
+              <div class="text" title="` + time_now + `">
+                <p>Hey <span class="client-name-text"></span>! I’m VizBot, your StaffViz Guru. How can I help? 😊</p>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_welcome_back_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg" id="welcome-back-msg">
+          <div class="d-flex">
+            <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+            <div class="text-box">
+              <div class="text" title="` + time_now + `">
+                <p>Welcome Back <span class="client-name-text"></span>!
+                  How can I assist you today?</p>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn form-back-btn">Not <span class="client-name-text"></span>? </button>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_idle_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg">
+          <div class="d-flex">
+            <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+            <div class="text-box">
+              <div class="text" title="` + time_now + `">
+                <p>Seems like you left the chat for last 5 mintues. Just a heads-up</p>
+              </div>
+              <p class="date-time">` + time_now + `</p>
+            </div>
+          </div>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_options_list_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="options-list-msg" title="` + time_now + `">
+          <div class="msg-box">
+            <div class="msg-header">
+              <p>How can I help you? 👇</p>
+            </div>
+            <ul>
+              <li>
+                <button class="btn schedule-demo-btn">Schedule a Demo</button>
+              </li>
+              <li>
+                <button class="btn schedule-demo-btn">Discuss Pricing</button>
+              </li>
+              <li>
+                <button class="btn schedule-demo-btn">Technical Inquiries </button>
+              </li>
+              <li>
+                <button class="btn schedule-demo-btn">Become An Affiliate</button>
+              </li>
+            </ul>
+          </div>
+        <p class="date-time">` + time_now + `</p>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_close_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg" id="chat-close-msg">
+          <div class="d-flex">
+            <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+            <div class="text-box">
+              <div class="text" title="` + time_now + `">
+                <p>Oops! Looks like you pressed the close chat button.</p>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+
+    function chat_end_msg() {
+        $('.date-time').remove();
+        var time_now = getFormattedTime();
+        let msg = `<div class="system-msg" id="chat-close-msg">
+      <div class="d-flex">
+        <div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div>
+        <div class="text-box">
+          <div class="text" title="` + time_now + `">
+            <p>This chat has been auto-closed.</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+        $('#vizbot .chat-body').append(msg);
+    }
+    /* End Chatbot all default msgs */
+
+    function initializeIntlTelInput(input) {
+        window.intlTelInput(input, {
+            hiddenInput: input.id,
+            separateDialCode: true,
+            formatOnDisplay: true,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+        });
+        input.dataset.intlTelInit = "true"; // Prevent reinitialization
+    }
+
+    function check_chatbot_user_status() {
+        if (localStorage.getItem('chat_bot_client_data') == null) {
+            chat_first_msg();
+            $('#client-info-form, #chat-form').show();
+
+        } else {
+            let userData = JSON.parse(localStorage.getItem('chat_bot_client_data'));
+            let clientName = userData.client_name;
+            chat_welcome_back_msg();
+            $('#welcome-back-msg .client-name-text').text(clientName);
+            chat_options_list_msg();
+            $('#chat-form').show();
+        }
+        const phoneInput = document.getElementById("client_phone");
+        console.log(phoneInput);
+        if (phoneInput) {
+            if (phoneInput.isConnected) {
+                initializeIntlTelInput(phoneInput);
+            } else {
+                $("#client_phone").each(function () {
+                    initializeIntlTelInput(this);
+                });
+            }
+        }
+        else {
+            console.log('no phone input found');
+        }
+    }
+
+
+    $(document).ready(function () {
+        //Allow telephone characters only
+        $('#client_phone').on('keypress', function (event) {
+            const allowedChars = /^[0-9+\-\(\)\s]$/;
+            const key = String.fromCharCode(event.which);
+
+            if (!allowedChars.test(key)) {
+                event.preventDefault();
+            }
+        });
+    });
+    $(document).ready(function () {
+        // Return to first chatbot info form if it is not same user
+        $(document).on('click', '#vizbot .chat-body .system-msg .form-back-btn', function (e) {
+            e.preventDefault();
+            $('#vizbot #chat-screen #welcome-back-msg, #vizbot #chat-screen .options-list-msg').remove();
+            chat_first_msg();
+            $('#vizbot #client-info-form, #vizbot #chat-form').show();
+        });
+        //Continue chat on clicking 'drop a msg' button in chatbot
+        $(document).on('click', '#vizbot .drop-msg-btn', function (e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            clearInterval(idleInterval);
+            $('#vizbot .chat-close-timer,#vizbot .chat-close-btns,#vizbot .chat-close-btns-user').hide();
+            $('#vizbot #chat-form').show();
+            $('#vizbot #chat-form #chat-reply-input').focus();
+            startIdleTimer();
+        });
+        //Go to chatbot rating screen on cliking 'end chat button'
+        $(document).on('click', '#vizbot .end-chat-btn', function (e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            clearInterval(idleInterval);
+            $('#vizbot #chat-body,#vizbot #client-info-form,#vizbot .chat-close-timer,#vizbot .chat-close-btns,#vizbot .chat-close-btns-user,#vizbot .options-list-msg').hide();
+            $('#vizbot #ratings-form').show();
+        });
+        // send response against four options
+        $(document).on('click', '#vizbot .options-list-msg ul li .btn', function (e) {
+            let btnText = $(this).text();
+            var time_now = getFormattedTime();
+            var history = [];
+            var user_post = '<div class="client-msg"><div class="text" title="' + time_now + '"><p>' + btnText + '</p></div><p class="date-time">' + time_now + '</p></div>';
+            $('.date-time').remove();
+            $('#vizbot .chat-body').append(user_post);
+            $(this).find('textarea').val('');
+            scrollToBottom();
+            $(this).find('#chat-reply-input').val('');
+            var loader = '<div class="system-msg loader-row-msg"><div class="d-flex"><div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div> <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div></div></div>';
+            $('#vizbot .options-list-msg').remove()
+            $('#vizbot .chat-body').append(loader);
+            clearInterval(timerInterval);
+            clearInterval(idleInterval);
+            scrollToBottom();
+            $.ajax({
+                url: app_ajax_chat,  // Your endpoint
+                type: "POST",  // HTTP method
+                contentType: "application/json",  // Ensures the server knows it's JSON
+                data: JSON.stringify({  // Serialize the data into JSON format
+                    user_query: btnText,  // Include your user query
+                    history: history  // Ensure 'history' is defined and valid
+                }),
+                success: function (response) {
+                    $('.date-time,#vizbot .chat-body .loader-row-msg').remove();
+                    var time_reply = getFormattedTime();
+                    var formattedmsg = addAnchorTagsToLinks(response.response);
+                    var formattedmsg = addAnchorTagsToLinks(response.response);
+                    var user_reply = '<div class="system-msg"><div class="d-flex"><div class="img"><img src="{{ asset('public/assets/img/vizbot-icon.png')}}" alt="Vizbot Image"></div><div class="text-box"><div class="text" title="' + time_reply + '"><p>' + formattedmsg + '</p></div><p class="date-time">' + time_reply + '</p></div></div></div>';
+                    $('#vizbot .chat-body').append(user_reply);
+                    startIdleTimer();
+                    scrollToBottom();
+                },
+                error: function (xhr, status, error) {
+                    console.log("Request failed:", error);
+                }
+            });
+        });
+    });
+
+    // Track AJAX progress using global AJAX events
+    let isAjaxInProgress = false;
+    $(document).on('ajaxStart', () => isAjaxInProgress = true);
+    $(document).on('ajaxStop', () => isAjaxInProgress = false);
+
+    // Save chatbot HTML and form state to localStorage
+    function saveChatbotHTML() {
+        const chatbotElement = $('#vizbot').clone(); // Clone the element to avoid modifying the DOM
+
+        chatbotElement.find('.iti').each(function () {
+
+            const originalInput = `<input type="tel" class="form-control" id="client_phone" placeholder="(123) 343-3432">`;
+            $(this).replaceWith(originalInput); // Replace the .iti div with the original input
+        });
+
+        const chatbotHTML = chatbotElement.html();
+        const chatbotState = {
+            html: chatbotHTML,
+        };
+
+        localStorage.setItem('chatbot_state', JSON.stringify(chatbotState)); // Save full state to localStorage
+        console.log("Chatbot content and state saved to localStorage");
+    }
+
+
+    // Restore chatbot HTML and reinitialize components
+    function restoreChatbotHTML() {
+        const chatbotState = localStorage.getItem('chatbot_state');
+        if (chatbotState) {
+            const state = JSON.parse(chatbotState);
+            $('#vizbot').html(state.html); // Restore HTML
+            console.log("Chatbot content and state restored from localStorage");
+
+            setTimeout(() => {
+                if ($.trim($('#vizbot #chat-body').html()) === '') {
+                    console.log('chat body empty');
+                    check_chatbot_user_status(); // Ensure the user status is checked
+                } else {
+
+                    const phoneInput = document.getElementById("client_phone");
+                    console.log(phoneInput);
+                    if (phoneInput) {
+                        console.log('phone input found');
+                        if (phoneInput.isConnected) {
+                            initializeIntlTelInput(phoneInput);
+
+                            console.log('static phone');
+                        } else {
+                            $("#client_phone").each(function () {
+                                initializeIntlTelInput(this);
+                                console.log('dynamic phone');
+                            });
+                        }
+                    }
+                    else {
+                        console.log('no phone input found');
+                    }
+                    if (!($('#vizbot #ratings-form').is(":visible"))) {
+                        if (($('#vizbot .chat-close-timer').is(":visible"))) {
+                            resumeStoppedTimer();
+                        } else {
+                            const length = $('#vizbot #chat-body .client-msg').length;
+                            if (length > 0) {
+                                startIdleTimer(); // Start idle timer if there are messages
+                            }
+                        }
+                    }
+                }
+            }, 500); // Adjusted delay to allow for content restoration
+            scrollToBottom(); // Ensure the page is scrolled to the bottom
+        }
+    }
+    function resumeStoppedTimer() {
+        if (timerInterval) return; // Prevent multiple intervals.
+
+        let timerValueText = $('#vizbot .chat-close-timer p').text().trim();
+        let [hours, minutes, seconds] = timerValueText.split(':').map(Number);
+        let timerValue = (hours * 3600 + minutes * 60 + seconds) * 1000;
+        let startTime = performance.now();
+
+        timerInterval = setInterval(() => {
+            let elapsed = performance.now() - startTime;
+            let remainingTime = Math.max(timerValue - elapsed, 0);
+
+            let totalSeconds = Math.floor(remainingTime / 1000);
+            let currentHours = Math.floor(totalSeconds / 3600);
+            let currentMinutes = Math.floor((totalSeconds % 3600) / 60);
+            let currentSeconds = totalSeconds % 60;
+            let formattedTime = `${currentHours.toString().padStart(2, '0')}:${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}`;
+
+            $('#vizbot .chat-close-timer p').text(formattedTime);
+
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                timerInterval = null; // Reset the interval to allow restarting if needed.
+                scrollToBottom();
+                saveChatbotHTML();
+                $('#vizbot #chat-body').hide();
+                chat_end_msg();
+                $('.date-time').remove();
+                sendVizbotHTMLForm();
+            }
+        }, 1000);
+    }
+    // Save chatbot content to localStorage when changes occur or the tab is closed
+    function saveChatbotContent() {
+        const chatbotContent = $('#vizbot').html();
+        localStorage.setItem("chatbotContent", chatbotContent);
+        localStorage.setItem("chatbotLastActive", Date.now()); // Save a timestamp for the last update
+        console.log("Chatbot content saved.");
+    }
+
+    window.addEventListener("beforeunload", saveChatbotContent);
+
+    // Restore chatbot content when a tab is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        const savedContent = localStorage.getItem("chatbotContent");
+        if (savedContent) {
+            console.log("Restoring chatbot content from localStorage...");
+            $('#vizbot').html(savedContent);
+            restoreChatbotHTML();
+        } else {
+            console.log("No existing chatbot content found.");
+        }
+    });
+
+    // Synchronize content across tabs using the storage event
+    window.addEventListener("storage", function (event) {
+        if (event.key === "chatbotContent") {
+            console.log("Chatbot content updated in another tab. Synchronizing...");
+            const updatedContent = localStorage.getItem("chatbotContent");
+            $('#vizbot').html(updatedContent);
+            restoreChatbotHTML();
+        }
+    });
+
+    // // Update form state after loading chatbot content
+    function updateForm() {
+        const chatbotState = localStorage.getItem('chatbot_state');
+        if (chatbotState != null) {
+            const state = JSON.parse(chatbotState);
+            $('#vizbot').html(state.html);
+
+            setTimeout(() => {
+                if ($.trim($('#vizbot #chat-body').html()) === '') {
+                    console.log('chat body empty');
+                    check_chatbot_user_status(); // Ensure the user status is checked
+                } else {
+                    if (!($('#vizbot #ratings-form').is(":visible"))) {
+                        if (($('#vizbot .chat-close-timer').is(":visible"))) {
+                            resumeStoppedTimer();
+                        } else {
+                            const length = $('#vizbot #chat-body .client-msg').length;
+                            if (length > 0) {
+                                startIdleTimer(); // Start idle timer if there are messages
+                            }
+                        }
+                    }
+                }
+            }, 1000); // Adjust delay as needed
+        } else {
+            check_chatbot_user_status(); // If no state is found, check user status
+        }
+        scrollToBottom(); // Ensure page scroll is correct
+    }
+
+    // Open the chatbot form and initialize the state
+    function openForm() {
+
+        document.getElementById("vizbot").style.display = "block"; // Show the chat window
+
+        // Add a delay of 500ms before showing and adding the class
+        setTimeout(() => {
+            $("#vizbot .lds-roller-footer").show();
+        }, 100);
+
+        if (openMinimzieChat == 0) {
+            openMinimzieChat = 1;
+            updateForm(); // Initialize the form state
+        }
+        setTimeout(() => {
+            $("#vizbot .lds-roller-footer").hide();
+        }, 500);
+    }
+
+    function addAnchorTagsToLinks(text) {
+        if (typeof text !== 'string') {
+            console.error('Input must be a valid string.');
+        if (typeof text !== 'string') {
+            console.error('Input must be a valid string.');
+            return '';
+        }
+        
+        const regex = /https?:\/\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]+/g;
+        return text.replace(regex, (url) => {
+            const cleanedUrl = url.endsWith('.') ? url.slice(0, -1) : url;
+            return `<a href="${cleanedUrl}" target="_blank">${cleanedUrl}</a>`;
+            const cleanedUrl = url.endsWith('.') ? url.slice(0, -1) : url;
+            return `<a href="${cleanedUrl}" target="_blank">${cleanedUrl}</a>`;
+        });
+    }
+
+</script>

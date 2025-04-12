@@ -1,0 +1,389 @@
+<!-- Footer -->
+<footer>
+  <div class="container-fluid">
+    <div class="row justify-content-between">
+      <div class="col-xl-3 px-xl-0 col-sm-6 order-1">
+        <div class="single-box info-box">
+          <img class="pb-3 logo" src="{{ asset('public/assets/img/StaffViz-white-logo.svg') }}" alt="Logo">
+          <p>Experience the ultimate solution for automating time tracking, optimizing employee management, and tracking
+            employee engagement.</p>
+
+        </div>
+      </div>
+      <div class="col-xl-1 px-xl-0 col-sm-3 col-6 order-2">
+        <div class="single-box case-studies-box position-relative">
+          <h2>Case Studies</h2>
+          <ul>
+            <li><a href="{{ url('/case-study/results-driven') }}">Results Driven</a></li>
+            <li><a href="{{ url('/case-study/click2mail') }}">Click2Mail</a></li>
+            <li><a href="{{ url('/case-study/physician-wealth-systems') }}">Physician Wealth Systems</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-6 col-12 order-xl-3 order-4 two-line-col-box">
+        <div class="single-box">
+          <ul class="two-line-col">
+            <li><a href="{{ url('/features') }}">Features</a></li>
+            <li><a href="{{ url('/solutions') }}">Solutions</a></li>
+            <li><a href="{{ url('/integrations') }}">Integrations</a></li>
+            <li><a href="{{ url('/partner-program') }}">Partner Program</a></li>
+            <li><a href="{{ url('/about-us') }}">About us</a></li>
+            <li><a href="{{ url('/contact-us') }}">Contact us</a></li>
+            <li><a href="{{ url('/blogs') }}">Blogs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-1 px-xl-0 col-sm-3 col-6 order-xl-4 order-3">
+        <div class="single-box comparison-box position-relative">
+          <h2>Comparison</h2>
+          <ul>
+            <li><a href="{{url('/blogs/staffviz-vs-hubstaff-comparative-analysis')}}">Vs Hubstaff</a></li>
+            <li><a href="{{url('/blogs/staffviz-vs-clockify-ultimate-showdown')}}">Vs Clockify</a></li>
+            <li><a href="{{url('/blogs/staffviz-vs-time-doctor-compare-and-contrast')}}">Vs Timedoctor</a></li>
+            <li><a href="{{url('/blogs/staffviz-vs-toggltrack-which-time-tracking-tool-is-right-for-you')}}">Vs
+                Toggltrack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-3 px-xl-0 col-sm-6 order-5">
+        <div class="single-box form-box">
+          <h2>Want to receive product updates?</h2>
+
+          <div class="input-group mb-3 position-relative">
+            <div class="form-group justify-content-between d-flex w-100">
+              <input type="text" class="form-control email inputForNewslwtter" placeholder="john@email.com"
+                aria-label="Enter your Email ..." aria-describedby="basic-addon2">
+              <span class="input-group-text" id="subscribeNewsletter">SUBSCRIBE NOW</span>
+            </div>
+            <div class="lds-roller-footer position-absolute">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="subscribe_early_error"></div>
+          </div>
+          <div class="social_div d-md-flex">
+            <div class="d-flex align-items-center">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="subscribe_privacy_check" id="subscribe_privacy_check" value="1" required>
+                <span class="checkmark"></span>
+              </label>
+              <!-- <input type="checkbox" name="subscribe_privacy_check" id="subscribe_privacy_check" value="1" required> -->
+              <p>Accept our <a class="text-white" href="{{ url('/privacy-policy') }}">Privacy Policy</a>.</p>
+            </div>
+            <div class="d-flex justify-content-md-end justify-content-center pt-md-0 pt-4 social-icons">
+              <a href="https://www.linkedin.com/company/staffviz/" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                  <g clip-path="url(#clip0_4460_3144)">
+                    <path
+                      d="M10.4963 0.28125C16.293 0.28125 20.9926 4.96722 20.9926 10.7472C20.9926 16.5272 16.293 21.2131 10.4963 21.2131C4.69957 21.2131 0 16.5272 0 10.7472C0 4.96722 4.69957 0.28125 10.4963 0.28125ZM6.1708 15.2508H7.65023V9.40699H6.1708V15.2508ZM10.79 12.1712C10.79 11.2494 11.2256 10.5104 12.2288 10.5104C13.2193 10.5104 13.5401 11.3067 13.5401 12.1712V15.2516H15.0105V11.4866C15.0105 10.1493 14.3608 9.21396 12.9441 9.21396C12.301 9.21396 11.5582 9.55013 11.244 10.1337L10.79 10.9594V9.40699H9.39012V15.2508H10.79V12.1712ZM11.2744 12.1712V15.7338H8.90572V8.924H11.2744V9.35874C11.742 8.94118 12.3162 8.73097 12.9441 8.73097C14.6282 8.73097 15.4949 9.88181 15.4949 11.4866V15.7325L13.0557 15.7329V12.1712C13.0557 11.5905 12.9273 10.9934 12.2288 10.9934C11.5004 10.9934 11.2744 11.5218 11.2744 12.1712ZM6.90129 8.09584C7.41398 8.09584 7.82045 7.67787 7.82045 7.16952C7.82045 6.66077 7.41398 6.24362 6.90129 6.24362C6.38859 6.24362 5.98213 6.66077 5.98213 7.16952C5.98213 7.67787 6.38818 8.09584 6.90129 8.09584ZM6.90129 8.57883C6.12322 8.57883 5.49773 7.94248 5.49773 7.16952C5.49773 6.39657 6.12322 5.76062 6.90129 5.76062C7.67895 5.76062 8.30484 6.39657 8.30484 7.16952C8.30484 7.94207 7.67895 8.57883 6.90129 8.57883ZM5.68641 15.7338V8.924H8.13463V15.7338H5.68641ZM10.4963 0.764652C4.96699 0.764652 0.484395 5.23387 0.484395 10.7472C0.484395 16.2605 4.96699 20.7297 10.4963 20.7297C16.0256 20.7297 20.5082 16.2605 20.5082 10.7472C20.5082 5.23387 16.0256 0.764652 10.4963 0.764652Z"
+                      fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4460_3144">
+                      <rect width="21" height="20.9392" fill="white" transform="translate(0 0.277344)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/Staffviz/" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <g clip-path="url(#clip0_4460_3138)">
+                    <path
+                      d="M10.625 0.277344C16.4238 0.277344 21.125 4.96495 21.125 10.747C21.125 16.529 16.4238 21.2166 10.625 21.2166C4.82621 21.2166 0.125 16.529 0.125 10.747C0.125 4.96495 4.82621 0.277344 10.625 0.277344ZM9.05451 15.7147V10.9486H8.37939C8.17432 10.9486 8.0082 10.7825 8.0082 10.5785V9.06937C8.0082 8.86611 8.17514 8.69966 8.37939 8.69966H9.05451V7.48625C9.05451 6.33909 9.98762 5.40909 11.1381 5.40909H12.8706C13.0757 5.40909 13.2418 5.57473 13.2418 5.77921V7.2879C13.2418 7.49238 13.0757 7.65802 12.8706 7.65802H11.8452C11.7283 7.65802 11.6319 7.75412 11.6319 7.87068V8.70048L12.848 8.69966C13.0531 8.71398 13.2192 8.8518 13.2192 9.06937C13.1831 9.58058 13.1331 10.0971 13.0896 10.6091C13.0736 10.8001 12.9124 10.9486 12.7201 10.9486H11.6319V15.7147C11.6319 15.918 11.4654 16.0844 11.2612 16.0844L9.4257 16.0848C9.22104 16.0848 9.05451 15.9188 9.05451 15.7147ZM9.53932 15.6023H11.1471V10.4652H12.6159L12.7246 9.18184H11.1471V7.87068C11.1471 7.48625 11.4597 7.17461 11.8452 7.17461H12.757V5.8925H11.1381C10.255 5.8925 9.53932 6.60615 9.53932 7.48625V9.18266H8.49301V10.4652H9.53932V15.6023ZM10.625 0.760337C5.09363 0.760337 0.609395 5.2316 0.609395 10.747C0.609395 16.2623 5.09363 20.7336 10.625 20.7336C16.1564 20.7336 20.6406 16.2623 20.6406 10.747C20.6406 5.2316 16.1564 0.760337 10.625 0.760337Z"
+                      fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4460_3138">
+                      <rect width="21" height="20.9392" fill="white" transform="translate(0.125 0.277344)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a href="https://twitter.com/StaffViz" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <g clip-path="url(#clip0_4460_3141)">
+                    <path
+                      d="M10.75 0.277344C16.5488 0.277344 21.25 4.96495 21.25 10.747C21.25 16.529 16.5488 21.2166 10.75 21.2166C4.95121 21.2166 0.25 16.529 0.25 10.747C0.25 4.96495 4.95121 0.277344 10.75 0.277344ZM10.75 0.760337C5.21863 0.760337 0.734395 5.2316 0.734395 10.747C0.734395 16.2623 5.21863 20.7336 10.75 20.7336C16.2814 20.7336 20.7656 16.2623 20.7656 10.747C20.7656 5.2316 16.2814 0.760337 10.75 0.760337Z"
+                      fill="white" />
+                    <path
+                      d="M11.6951 9.67499L16.0395 4.63965H15.01L11.2378 9.01177L8.22496 4.63965H4.75L9.30601 11.2511L4.75 16.5314H5.77953L9.76307 11.9143L12.9449 16.5314H16.4198L11.6949 9.67499H11.6951ZM10.285 11.3093L9.82342 10.651L6.15048 5.41242H7.73178L10.6959 9.64009L11.1575 10.2984L15.0105 15.7938H13.4292L10.285 11.3096V11.3093Z"
+                      fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4460_3141">
+                      <rect width="21" height="20.9392" fill="white" transform="translate(0.25 0.277344)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/staffvizusa/" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" height="480pt" viewBox="0 0 480 480" width="480pt">
+                  <path
+                    d="m240 0c-132.546875 0-240 107.453125-240 240s107.453125 240 240 240 240-107.453125 240-240c-.148438-132.484375-107.515625-239.851562-240-240zm0 464c-123.710938 0-224-100.289062-224-224s100.289062-224 224-224 224 100.289062 224 224c-.140625 123.652344-100.347656 223.859375-224 224zm0 0"
+                    style="fill:#7987A1" />
+                  <path
+                    d="m344 96h-208c-22.082031.027344-39.972656 17.917969-40 40v208c.027344 22.082031 17.917969 39.972656 40 40h208c22.082031-.027344 39.972656-17.917969 40-40v-208c-.027344-22.082031-17.917969-39.972656-40-40zm24 248c0 13.253906-10.746094 24-24 24h-208c-13.253906 0-24-10.746094-24-24v-208c0-13.253906 10.746094-24 24-24h208c13.253906 0 24 10.746094 24 24zm0 0"
+                    style="fill:#7987A1" />
+                  <path
+                    d="m240 160c-44.183594 0-80 35.816406-80 80s35.816406 80 80 80 80-35.816406 80-80c-.046875-44.164062-35.835938-79.953125-80-80zm0 144c-35.347656 0-64-28.652344-64-64s28.652344-64 64-64 64 28.652344 64 64c-.039062 35.328125-28.671875 63.960938-64 64zm0 0"
+                    style="fill:#7987A1" />
+                  <path
+                    d="m328 128c-13.253906 0-24 10.746094-24 24s10.746094 24 24 24 24-10.746094 24-24-10.746094-24-24-24zm0 32c-4.417969 0-8-3.582031-8-8s3.582031-8 8-8 8 3.582031 8 8-3.582031 8-8 8zm0 0"
+                    style="fill:#7987A1" />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@StaffVizusa" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                  <g clip-path="url(#clip0_3688_326)">
+                    <path
+                      d="M10.5002 0.636719C16.297 0.636719 20.9965 5.33629 20.9965 11.133C20.9965 16.9298 16.297 21.6293 10.5002 21.6293C4.70348 21.6293 0.00390625 16.9298 0.00390625 11.133C0.00390625 5.33629 4.70348 0.636719 10.5002 0.636719ZM10.5002 1.12152C4.9709 1.12152 0.488301 5.60371 0.488301 11.133C0.488301 16.6623 4.9709 21.1445 10.5002 21.1445C16.0295 21.1445 20.5121 16.6623 20.5121 11.133C20.5121 5.60371 16.0295 1.12152 10.5002 1.12152Z"
+                      fill="white" />
+                    <path
+                      d="M15.3222 6.39881C11.7902 5.76241 8.20822 5.76241 4.67542 6.39881C3.78622 6.55961 3.14062 7.33601 3.14062 8.24481V13.7552C3.14062 14.6644 3.78622 15.4404 4.67582 15.6008C6.44182 15.9188 8.22023 16.078 9.99903 16.078C11.7774 16.078 13.5562 15.9188 15.3222 15.6008C16.2118 15.4408 16.857 14.6644 16.857 13.7552V8.24481C16.857 7.33601 16.2114 6.55961 15.3222 6.39881ZM16.057 13.7552C16.057 14.2768 15.6882 14.722 15.1802 14.8136C11.7418 15.4336 8.25542 15.4336 4.81742 14.8136C4.30902 14.722 3.94063 14.2772 3.94063 13.7552V8.24481C3.94063 7.72321 4.30942 7.27801 4.81742 7.18601C6.53662 6.87601 8.26743 6.72121 9.99903 6.72121C11.7298 6.72121 13.4614 6.87641 15.1798 7.18601C15.6882 7.27801 16.057 7.72321 16.057 8.24481V13.7552Z"
+                      fill="white" />
+                    <path
+                      d="M12.0031 10.2968L9.64274 8.734C9.38314 8.5624 9.05314 8.5476 8.77954 8.6944C8.50594 8.8412 8.33594 9.1256 8.33594 9.436V12.564C8.33594 12.8744 8.50594 13.1588 8.77954 13.3056C8.90474 13.3728 9.04114 13.406 9.17794 13.406C9.34034 13.406 9.50274 13.3588 9.64354 13.2656L12.0035 11.7004C12.2395 11.544 12.3803 11.282 12.3803 10.9988C12.3799 10.7164 12.2391 10.4536 12.0031 10.2968ZM11.5611 11.034L9.20114 12.5992C9.19474 12.6032 9.17954 12.6128 9.15794 12.6012C9.13594 12.5896 9.13594 12.5724 9.13594 12.5644V9.4364C9.13594 9.428 9.13594 9.4112 9.15834 9.3992C9.16634 9.3948 9.17314 9.3932 9.17914 9.3932C9.18954 9.3932 9.19674 9.398 9.20114 9.4012L11.5615 10.964C11.5667 10.9672 11.5803 10.9764 11.5803 10.9992C11.5799 11.0216 11.5663 11.0308 11.5611 11.034Z"
+                      fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_3688_326">
+                      <rect width="21" height="21" fill="white" transform="translate(0 0.632812)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div style="background: white;position: relative;">
+  <div class="container-fluid">
+    <div class="footer-bottom text-center">
+      <p>Copyright © <?php echo date('Y') ?> StaffViz.com | All Rights Reserved <span class="d-block"><a
+            href="{{ url('/terms-conditions') }}">Terms & Conditions</a> | <a
+            href="{{ url('/privacy-policy') }}">Privacy
+            Policy</a></span></p>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="talkToSalePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content email_addres">
+      <div class="modal-body logo_side p-4">
+        <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+        <h2 class="mt-3">Talk to our Sales Team</h2>
+        <p>Fill out the form below, and one of our sales experts will get<br> in touch to answer your queries.
+        </p>
+        <form id="talktoSaleForm">
+          <div class="form-row align-items-end row">
+            <div class="col-md-6 mb-3 form-group">
+              <label class="form-label">Name <span>*</span></label>
+              <input type="text" id="first_name_talk" name="first_name_talk" class="form-control"
+                placeholder="Enter Name">
+              <span id="first-name-talk-error" class="form-error hide"></span>
+            </div>
+            <div class="col-md-6 mb-3 form-group">
+              <label class="form-label">Email <span>*</span></label>
+              <input type="email" id="company_email_talk" name="company_email_talk" class="form-control"
+                placeholder="sample@gmail.com">
+              <span id="company-email-talk-error" class="form-error hide"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="form-group position-relative">
+                <label for="">Contact No <span>*</span></label>
+                <input type="tel" class="form-control" name="contact_no" value="" id="c_contact_no"
+                  placeholder="(123) 343-3432" onkeypress="return isPhoneNumberKey(event)" />
+                <input type="hidden" name="country_code" id="country_code">
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 form-group">
+
+              <label class="form-label">Number of Employees <span>*</span></label>
+              <select name="noOfEmployees" id="noOfEmployees" class="form-control">
+                <option value="10-50">10 - 50</option>
+                <option value="51-100">51 - 100</option>
+              </select>
+              <span id="noOfEmployees-error" class="form-error hide"></span>
+            </div>
+            <div class="col-12 mb-3 form-group">
+              <label class="form-label">Company</label>
+              <input type="text" id="company_name_talk" name="company_name_talk" class="form-control"
+                placeholder="Enter Your StaffViz Company Name">
+              <span id="company-name-talk-error" class="form-error hide"></span>
+            </div>
+            <div class="col-12 form-group">
+              <label class="form-label">Reason <span class="message-star hide">*</span></label>
+              <textarea id="msg" name="msg" class="form-control" rows="4" placeholder="Enter Message"></textarea>
+              <span id="msg-error" class="form-error hide"></span>
+              <!-- <div class="mt-2 form-check">
+                                    <input type="checkbox" class="form-check-input" name="termsConditions"
+                                        id="termsConditions">
+                                    <label class="form-check-label" for="termsConditions">By Selecting this you
+                                        agree our <a href="{{url('terms-conditions')}}">Terms & Conditions</a>
+                                    </label>
+                                </div> -->
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div id="html_element"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="ctr_btn mt-md-5 mt-4 mb-2">
+                <button class="email_btn talk_to_sales_close">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cookiePopup" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">We value your privacy</h5>
+      </div>
+      <div class="modal-body">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mb-lg-0 mb-3">
+              <p>We use cookies to enhance your browsing experience, serve personalised content, captcha and analyse our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="col-lg-4">
+              <div class="btns d-flex align-items-center justify-content-lg-end justify-content-center">
+                <button type="button" class="btn get_btn cookie-btn" id="reject-btn">Reject All</button>
+                <button type="button" class="btn get_btn cookie-btn" id="accept-btn">Accept All</button>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="accordion" id="cookieAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header d-flex align-items-center">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse-cookie-1">
+                  <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-minus ms-auto"></i>
+                    <h6>Necessary</h6>
+                  </div>
+                </button>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </h2>
+              <div id="collapse-cookie-1" class="accordion-collapse collapse show" data-bs-parent="#cookieAccordion">
+                <div class="accordion-body">
+                  We use cookies that are essential for our site to work. To improve our site, we would like to use
+                  additional cookies to help us understand how visitors use it, measure traffic to our site from social
+                  media platforms.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header d-flex align-items-center">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse-cookie-2">
+                  <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-plus ms-auto"></i>
+                    <h6>Analytics</h6>
+                  </div>
+                </button>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </h2>
+              <div id="collapse-cookie-2" class="accordion-collapse collapse" data-bs-parent="#cookieAccordion">
+                <div class="accordion-body">
+                  We use cookies that are essential for our site to work. To improve our site, we would like to use
+                  additional cookies to help us understand how visitors use it, measure traffic to our site from social
+                  media platforms.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header d-flex align-items-center">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse-cookie-3">
+                  <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-plus ms-auto"></i>
+                    <h6>Advertisment</h6>
+                  </div>
+                </button>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </h2>
+              <div id="collapse-cookie-3" class="accordion-collapse collapse" data-bs-parent="#cookieAccordion">
+                <div class="accordion-body">
+                  We use cookies that are essential for our site to work. To improve our site, we would like to use
+                  additional cookies to help us understand how visitors use it, measure traffic to our site from social
+                  media platforms.
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/css/intlTelInput.css" />
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<script>
+
+  const intervalId = setInterval(() => {
+    document.body.childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() === 'Verification: 6d2f4c4cd4a91b9f') {
+        node.remove(); // Remove the unwanted text
+        clearInterval(intervalId); // Stop the interval once the text is removed
+      }
+    });
+  }, 100); // Check every 100 milliseconds
+  // save cookie
+  $(document).ready(function () {
+    $("#cookiePopup #accept-btn").click(function () {
+        document.cookie = "cookiesAccepted=true; path=/; max-age=" + (365 * 24 * 60 * 60);
+        $('#cookiePopup').modal('hide');
+    });
+  });
+  // reject cookie
+  $("#cookiePopup #reject-btn").click(function () {
+    document.cookie = "cookiesAccepted=false; path=/; max-age=" + (365 * 24 * 60 * 60); 
+    $('#cookiePopup').modal('hide');
+  });
+  //Open Cookie Banner
+  $(document).ready(function () {
+    if (document.cookie.includes("cookiesAccepted=true")) {
+        $('#cookiePopup').modal('hide');
+    } else {
+        $('#cookiePopup').modal('show');
+    }
+  });
+  // change plus minus toggle 
+  // $(document).ready(function () {
+  //   $("#cookiePopup .accordion-button").click(function () {
+  //     $("#cookiePopup .accordion-button i").not($(this).find("i")).removeClass("fa-minus").addClass("fa-plus");
+  //     $(this).find("i").toggleClass("fa-plus fa-minus");
+  //   });
+  // });
+  
+</script>
+
+@include("theme/layouts/chatbot")

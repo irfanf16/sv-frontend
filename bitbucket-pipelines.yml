@@ -1,0 +1,99 @@
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    qa:
+      - step:
+          name: Build and Push to Dockerhub
+          script:
+            - echo "Creating .env file with repository variables"
+            - |
+              cat << EOF > .env
+              APP_URL=https://qa.staffviz.io
+              APP_NAME=Staffviz
+              APP_NAME=Staffviz
+              APP_CHATBOT=http://ai.staffviz.io/chatbot
+              APP_TTH_WEB=https://qa-app.staffviz.io
+              REDIRECT_HTTPS=true
+              # REDIRECT_HTTPS=false
+              APP_ENV=production
+              APP_KEY=base64:N8FWrDMFwmgjNrJ0Lmi1Iq7xwWMH4Ay2m5+t7rMnz1Y=
+              APP_DEBUG=false
+              # APP_URL=https://www.staffviz.com
+              LOG_CHANNEL=stack
+              LOG_DEPRECATIONS_CHANNEL=null
+              LOG_LEVEL=debug
+              DB_CONNECTION=mysql
+              DB_HOST=mysql
+              DB_PORT=3307
+              DB_DATABASE=tth_frontend_web
+              DB_USERNAME=${QA_DB_USERNAME}
+              DB_PASSWORD=${QA_DB_PASSWORD}
+              BROADCAST_DRIVER=log
+              CACHE_DRIVER=file
+              EPLOY_LOCAL_SERVER=1
+              FILESYSTEM_DRIVER=local
+              QUEUE_CONNECTION=sync
+              SESSION_DRIVER=file
+              SESSION_LIFETIME=120
+              MEMCACHED_HOST=127.0.0.1
+              REDIS_HOST=redis
+              REDIS_PASSWORD=null
+              REDIS_PORT=6379
+              MAIL_MAILER=smtp
+              MAIL_HOST=smtp.office365.com
+              MAIL_PORT=587
+              MAIL_USERNAME=crecentechtth1@crecentech.com
+              MAIL_PASSWORD="farzand@123"
+              MAIL_ENCRYPTION=tls
+              MAIL_FROM_ADDRESS=crecentechtth1@crecentech.com
+              MAIL_FROM_NAME="StaffViz"
+              AWS_DEFAULT_REGION=us-east-1
+              AWS_USE_PATH_STYLE_ENDPOINT=false
+              PUSHER_APP_CLUSTER=mt1
+              MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+              MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+              INTERNAL_SYSTEM_COMMUNICATION='NoYWh6YWRAY3JlY.OiJIUzUxMiJ9J6Ln2VudGVeyJeHAiOjE2MzMwMTTIsImlhdCI6I5hbGcijaC5jb20iLCJlNMn0.blacEAK6gl6x1TYzMjk5NDk1Mv9i42HZnaKbZKUXeb16wdf_UF9Ec4fYM35sWqzIsbFksH0FQowbZKUXeb16wdf_UF9E'
+              ENCRYPTION_KEY_FOR_AGENT_LOGIN="Qdtk5nvoLsFT0ejrKqDtS1tUU2x2tLFP"
+              ADMIN_PORTAL_API="https://qa-backofficeapi.staffviz.io/api"
+              WEB_LOGIN="https://qa-app.staffviz.io/login"
+              IS_LOCAL_ENVIRONMENT=1
+              STRIPE_PRIVATE_KEY="pk_test_51LA9o4GN1EGOh1niwXczdeH9NKirgEIITvISk1nttLeJqvzzuOhfXoOdh99zRggP0X73PlCSvHStWVwia1ND5QIu00gJsJqfgr"
+              FIRSTPROMOTER_BASE_URL="https://taseer.firstpromoter.com"
+              FIRSTPROMOTER_CID="i7e6o90q"
+              EOF
+            - echo "Contents of .env file:"
+            - cat .env
+            - echo ${BITBUCKET_SSH_KEY_FILE}
+            - apt-get update
+            - apt-get install -y awscli
+            - BRANCH_NAME=${BITBUCKET_BRANCH}
+            - echo "Building Docker image"
+            - docker build -t staginstaffviz/staffviz:latest .
+            - docker tag staginstaffviz/staffviz:latest staginstaffviz/staffviz:tth-fe-$BRANCH_NAME
+            - echo "$DOCKERHUB_PASSWORD_STAGE" | docker login -u "$DOCKERHUB_USERNAME_STAGE" --password-stdin
+            - docker push staginstaffviz/staffviz:tth-fe-$BRANCH_NAME
+
+          services:
+            - docker
+      - step:
+          name: Deploy to ${BITBUCKET_BRANCH} Server
+          script:
+            - HOST_USER=qa
+            - HOST_IP=103.225.220.178
+            - apt-get update -y
+            - apt-get install sshpass -y
+            - echo $ssh_key > privatekey
+            - chmod 400 privatekey
+            - sshpass -p "$HOST_PASSWORD" ssh -o StrictHostKeyChecking=no "$HOST_USER@$HOST_IP" "
+                  cd /home/$HOST_USER/devops &&
+                  echo "$DOCKERHUB_PASSWORD_STAGE" | docker login -u "$DOCKERHUB_USERNAME_STAGE" --password-stdin &&
+                  docker rmi -f staginstaffviz/staffviz:tth-fe-qa &&
+                  docker-compose up -d tth_fe"
+          services:
+            - docker
+
+definitions:
+  services:
+    docker:
+      memory: 2048

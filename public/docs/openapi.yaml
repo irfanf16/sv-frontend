@@ -1,0 +1,589 @@
+openapi: 3.0.3
+info:
+  title: "Staffviz.com Api's"
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://app.staffviz.com'
+paths:
+  /api/me:
+    get:
+      summary: ''
+      operationId: getApiMe
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+  /api/client/add:
+    post:
+      summary: ''
+      operationId: postApiClientAdd
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: qymlrgeflovzhpck
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: melyna.batz@example.org
+                  nullable: false
+                status:
+                  type: string
+                  description: ''
+                  example: '0'
+                  nullable: false
+                  enum:
+                    - Active
+                    - active
+                    - Inactive
+                    - inactive
+                    - '1'
+                    - '0'
+                    - '1'
+                    - ''
+              required:
+                - name
+                - email
+  /api/client/update:
+    post:
+      summary: ''
+      operationId: postApiClientUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the clients table.'
+                  example: amet
+                  nullable: false
+              required:
+                - id
+  /api/client/delete:
+    delete:
+      summary: ''
+      operationId: deleteApiClientDelete
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The <code>email</code> of an existing record in the clients table.'
+                  example: rheathcote@example.net
+                  nullable: false
+              required:
+                - email
+  /api/client/search:
+    get:
+      summary: ''
+      operationId: getApiClientSearch
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_or_email:
+                  type: string
+                  description: ''
+                  example: sit
+                  nullable: false
+              required:
+                - id_or_email
+  /api/client/update_or_create:
+    post:
+      summary: ''
+      operationId: postApiClientUpdate_or_create
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: et
+                  nullable: false
+                email:
+                  type: string
+                  description: ''
+                  example: kenyon47@example.net
+                  nullable: false
+                status:
+                  type: string
+                  description: ''
+                  example: '1'
+                  nullable: false
+                  enum:
+                    - Active
+                    - active
+                    - Inactive
+                    - inactive
+                    - '1'
+                    - '0'
+                    - '1'
+                    - ''
+              required:
+                - name
+                - email
+  /api/project/add:
+    post:
+      summary: ''
+      operationId: postApiProjectAdd
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: error
+                  nullable: false
+                type:
+                  type: string
+                  description: ''
+                  example: '0'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+                billable:
+                  type: string
+                  description: ''
+                  example: '0'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+              required:
+                - title
+                - type
+                - billable
+  /api/project/update:
+    post:
+      summary: ''
+      operationId: postApiProjectUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: excepturi
+                  nullable: false
+                type:
+                  type: string
+                  description: ''
+                  example: '1'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+                billable:
+                  type: string
+                  description: ''
+                  example: '0'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+              required:
+                - id
+  /api/project/delete:
+    delete:
+      summary: ''
+      operationId: deleteApiProjectDelete
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: sed
+                  nullable: false
+              required:
+                - id
+  /api/task/add:
+    post:
+      summary: ''
+      operationId: postApiTaskAdd
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: neque
+                  nullable: false
+                project_id:
+                  type: string
+                  description: ''
+                  example: porro
+                  nullable: false
+                task_type:
+                  type: string
+                  description: ''
+                  example: '1'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+              required:
+                - title
+                - project_id
+                - task_type
+  /api/task/update:
+    post:
+      summary: ''
+      operationId: postApiTaskUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the activities table.'
+                  example: minus
+                  nullable: false
+                update_recurrence_series_conformation_setter:
+                  type: string
+                  description: ''
+                  example: '0'
+                  nullable: false
+                  enum:
+                    - '0'
+                    - '1'
+              required:
+                - id
+                - update_recurrence_series_conformation_setter
+  /api/task/delete:
+    delete:
+      summary: ''
+      operationId: deleteApiTaskDelete
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the activities table.'
+                  example: repellat
+                  nullable: false
+              required:
+                - id
+  /api/users:
+    get:
+      summary: ''
+      operationId: getApiUsers
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_type:
+                  type: string
+                  description: ''
+                  example: numquam
+                  nullable: false
+              required:
+                - user_type
+  /api/clients:
+    get:
+      summary: ''
+      operationId: getApiClients
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+  /api/teams:
+    get:
+      summary: ''
+      operationId: getApiTeams
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+  /api/projects:
+    get:
+      summary: ''
+      operationId: getApiProjects
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+  /api/tasks:
+    get:
+      summary: ''
+      operationId: getApiTasks
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+  /oauth2/token:
+    post:
+      summary: ''
+      operationId: postOauth2Token
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  description: ''
+                  example: quis
+                  nullable: false
+                client_id:
+                  type: string
+                  description: ''
+                  example: enim
+                  nullable: false
+                client_secret:
+                  type: string
+                  description: ''
+                  example: cum
+                  nullable: false
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+  /oauth2/authorize:
+    get:
+      summary: ''
+      operationId: getOauth2Authorize
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+    post:
+      summary: ''
+      operationId: postOauth2Authorize
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
